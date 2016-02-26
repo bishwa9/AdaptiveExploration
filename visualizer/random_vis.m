@@ -1,6 +1,7 @@
 % NOTE: I changed sensorvar to miscvar because there 
 %                       was no miscvar by two sensorvar
 
+addpath(genpath('../matlab_sim'));
 
 %%%%%%%%%%%%%%%%%%%%
 %   classmap -> true classification of each pixel
@@ -42,6 +43,7 @@ valuemap_(1:x_max, 1:y_max, 1:size(valuemap,3)) = valuemap;
 valuemap = valuemap_;
 
 mat_z = ones(x_max, y_max).*nominal_depth;
+t = 1:100;
 
 for i = 1:size(t,2)
     
