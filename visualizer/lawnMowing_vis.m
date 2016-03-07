@@ -52,6 +52,9 @@ valuemap = valuemap_;
 x_idx = 1; y_idx = 2;% velx_pos = 3; vely_pos = 4;
 
 %robots movement resolution is 1 (integer increments in movement)
+y_inc_ = 1;
+x_inc_ = 2;
+
 
 robo_state_init = [robotStart(1,1), robotStart(1,2)];
 robo_state_final = [roboEnd(1,1), roboEnd(1,2)];
@@ -63,8 +66,7 @@ robo_state = robo_state_init; %rover is at the start
 mat_z = ones(x_max, y_max).*nominal_depth;  %matrix that stores number of channels currently accessed at each pixel location
 figure;
 
-y_inc_ = 1;
-x_inc_ = 2;
+
 
 path = []; 
 
