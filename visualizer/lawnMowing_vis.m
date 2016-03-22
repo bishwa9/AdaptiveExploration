@@ -1,6 +1,8 @@
  % NOTE: I changed sensorvar to miscvar because there 
 %                       was no miscvar by two sensorvar
 
+addpath(genpath('../matlab_sim/'));
+
 
 %%%%%%%%%%%%%%%%%%%%
 %   classmap -> true classification of each pixel
@@ -58,28 +60,37 @@ figure;
 y_inc_ = 1;
 x_inc_ = 2;
 xy = [];
+ent = [];
+samples = [];
 for i = robo_state_init(x_pos):robo_state_final(x_pos)
     y_inc = (-1)^(mod(i,2)) * y_inc_;
 for j = robo_state_init(y_pos):robo_state_final(y_pos)
-    h0 = subplot(1,2,2);
+    
+    %plot the robot's rectangle
+    x_ = robo_state(x_pos); 
+    y_ = robo_state(y_pos);
+    h0 = subplot(2,2,2);
     xlim([0, x_max]); ylim([0, y_max]);
     r = rectangle('Position',[robo_state(x_pos), robo_state(y_pos), ...
                                                     roboLen, roboWid]);
-    drawnow; 
-    
-    x_ = robo_state(x_pos); 
-    y_ = robo_state(y_pos);
-    valuemap(x_, y_, :) = truevalue(x_, y_, :); %Sampling at the point
-    mat_z(x_, y_) = sampled_depth;
     xy = vertcat(xy, [x_, y_]);
     hold on; plot(xy(:, x_pos), xy(:, y_pos), 'r'); drawnow; hold off;
+    drawnow; 
+    robo_state = robo_state + [0, y_inc];
     
-    h1 = subplot(1,2,1);
+    %sample at the point and store data in valuemap
+    valuemap(x_, y_, :) = truevalue(x_, y_, :); %Sampling at the point
+    
+    %update the visualizing matrix (3d map shown in plot)
+    mat_z(x_, y_) = sampled_depth;
+    h1 = subplot(2,2,1);
     surf(-1.*mat_z);
     zlim([-10, 0]);
     drawnow;
     
-    robo_state = robo_state + [0, y_inc];
+    %pull the sampled vectors from valuemap
+    samples = valuemap(xy(:,1), xy(:,2), :);
+    
     
     %pause(0.3)
     delete(r);
