@@ -34,8 +34,7 @@ probrare = 0.02;
 
 sample_set = [];
 
-runs = 2;
-
+for i = 1:1
 % k-means
 x_ = valuemap(:,:,1);
 x_ = x_(:);
@@ -47,7 +46,6 @@ Data = [x_.';y_.';z_.'].';
 
 [~,centers,~,dists] = kmeans(Data,nclasses);
 
-for iter = 1:runs
 % Probability and Entropy
 sums = sum(dists,2);
 info = dists;
@@ -72,17 +70,9 @@ max_entropy_point_ind = datasample(max_entropy_point_ind,1);
 [I1, I2] = ind2sub(size(entropy_dinv),max_entropy_point_ind);
 
 rov_sample = truevalue(I1, I2, :);
-sample_set = vertcat(sample_set, ...
-                reshape(rov_sample, [1 size(rov_sample,3)]));
+sample_set = 
 overlap_sample = rov_sample(:,:,1:3);
-valuemap(I1,I2,:) = overlap_sample;
 
-if iter == 1
-    figure;
-end
-title('recomputed entropy');
-subplot(runs,1,iter);
-surf(entropy_dinv);
 
 % entropy_diff = entropy2 - entropy;
 % figure;

@@ -15,57 +15,46 @@ addpath(genpath('../matlab_sim/'));
 
 %%%%%%%%%%%%%%%%%%%%%
 % Example parameters. Comment this out if you want to use this as a function!
-ndomclasses = 6;  %classes that appear frequently in the data
-nrareclasses = 4; %classes that appear rarely
-siz = 100;         % size of the map- 100x100
-miscvar = .12;      %The noise inherent in the scene
-%                        (true value of pixel ~ N(mu_c, miscvar))
-sensorvar = .05;        %   sensorvar:       The noise added to the true value 
-nchannels = 8;      %The number of channels (bands) of information at every pixel
-nvisiblechans = 3;  %Number of channels accessible wihtout rover sampling (from Rover)
-probrare = 0.02;    % probability of a rare class
+ndomclasses = 6;
+nrareclasses = 4;
+siz = 100;
+miscvar = .12; 
+sensorvar = .05;
+nchannels = 8;
+nvisiblechans = 3;
+probrare = 0.02;
 
-robotStart = [10, 50];  %start location for rover
-roboEnd = [50, 80];     %end point for rover
+robotStart = [10, 50];
+roboEnd = [50, 80];
 % End of example parameters
 %%%%%%%%%%%%%%%%%%%%%
 
-[classmap, ... %ground truth of classification
-    valuemap, ... %satellite map (the low res map)
-    truevalue]...   %channel accesible after sensor sampling (info you get after sampling)
-    = simulator...  %thing that gives you that information
+[classmap, valuemap, truevalue] = simulator...
     (ndomclasses, nrareclasses, siz, miscvar, ...
     sensorvar, nchannels, nvisiblechans, probrare);
 
-%%%%Setup%%%%%
 Size_ClassMap = size(classmap);
 Size_valuemap = size(valuemap);
 Size_truevalue = size(truevalue);
 
 x_max = Size_ClassMap(1,1); y_max = Size_ClassMap(1,2);
-nominal_depth = Size_valuemap(1,3); % nvisiblechans
-sampled_depth = Size_truevalue(1,3); % nchannels
+nominal_depth = Size_valuemap(1,3);
+sampled_depth = Size_truevalue(1,3);
 
-%create nchannel big empty map, to be filled accordingly
 valuemap_ = zeros(size(truevalue));
 valuemap_(1:x_max, 1:y_max, 1:size(valuemap,3)) = valuemap;
 valuemap = valuemap_;
 
-x_idx = 1; y_idx = 2;% velx_pos = 3; vely_pos = 4;
-
-%robots movement resolution is 1 (integer increments in movement)
-y_inc_ = 1;
-x_inc_ = 2;
-
+x_pos = 1; y_pos = 2;% velx_pos = 3; vely_pos = 4;
 
 robo_state_init = [robotStart(1,1), robotStart(1,2)];
 robo_state_final = [roboEnd(1,1), roboEnd(1,2)];
 
-roboLen = 3; roboWid = 3; %make the rover a rectangle
+roboLen = 3; roboWid = 3;
 
-robo_state = robo_state_init; %rover is at the start
+robo_state = robo_state_init;
 
-mat_z = ones(x_max, y_max).*nominal_depth;  %matrix that stores number of channels currently accessed at each pixel location
+mat_z = ones(x_max, y_max).*nominal_depth;
 figure;
 
 y_inc_ = 1;
@@ -82,7 +71,7 @@ for j = robo_state_init(y_pos):robo_state_final(y_pos)
     y_ = robo_state(y_pos);
     h0 = subplot(2,2,2);
     xlim([0, x_max]); ylim([0, y_max]);
-    r = rectangle('Position',[robo_state(x_idx), robo_state(y_idx), ...
+    r = rectangle('Position',[robo_state(x_pos), robo_state(y_pos), ...
                                                     roboLen, roboWid]);
     xy = vertcat(xy, [x_, y_]);
     hold on; plot(xy(:, x_pos), xy(:, y_pos), 'r'); drawnow; hold off;
@@ -108,5 +97,5 @@ for j = robo_state_init(y_pos):robo_state_final(y_pos)
 end
     robo_state = robo_state + [x_inc_, -y_inc];
 end
-subplot(1,2,2); plot(path(:, x_idx), path(:, y_idx));
+subplot(1,2,2); plot(xy(:, x_pos), xy(:, y_pos));
 xlim([0, x_max]); ylim([0, y_max]);
