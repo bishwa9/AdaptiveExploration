@@ -1,6 +1,8 @@
  % NOTE: I changed sensorvar to miscvar because there 
 %                       was no miscvar by two sensorvar
 
+addpath(genpath('../matlab_sim/'));
+
 
 %%%%%%%%%%%%%%%%%%%%
 %   classmap -> true classification of each pixel
@@ -66,6 +68,7 @@ robo_state = robo_state_init; %rover is at the start
 mat_z = ones(x_max, y_max).*nominal_depth;  %matrix that stores number of channels currently accessed at each pixel location
 figure;
 
+<<<<<<< HEAD
 
 
 path = []; 
@@ -75,24 +78,51 @@ for i = robo_state_init(x_idx):robo_state_final(x_idx)
     
 for j = robo_state_init(y_idx):robo_state_final(y_idx)
     h0 = subplot(1,2,2);
+=======
+y_inc_ = 1;
+x_inc_ = 2;
+xy = [];
+ent = [];
+samples = [];
+for i = robo_state_init(x_pos):robo_state_final(x_pos)
+    y_inc = (-1)^(mod(i,2)) * y_inc_;
+for j = robo_state_init(y_pos):robo_state_final(y_pos)
+    
+    %plot the robot's rectangle
+    x_ = robo_state(x_pos); 
+    y_ = robo_state(y_pos);
+    h0 = subplot(2,2,2);
+>>>>>>> 88929eb24861d472b61aa5f576f260f39d46063e
     xlim([0, x_max]); ylim([0, y_max]);
     r = rectangle('Position',[robo_state(x_idx), robo_state(y_idx), ...
                                                     roboLen, roboWid]);
+    xy = vertcat(xy, [x_, y_]);
+    hold on; plot(xy(:, x_pos), xy(:, y_pos), 'r'); drawnow; hold off;
     drawnow; 
+    robo_state = robo_state + [0, y_inc];
     
+<<<<<<< HEAD
     x_ = robo_state(x_idx); 
     y_ = robo_state(y_idx);
     valuemap(x_, y_, :) = truevalue(x_, y_, :); %Sampling at the point
     mat_z(x_, y_) = sampled_depth;
     path = vertcat(path, [x_, y_]);
     hold on; plot(path(:, x_idx), path(:, y_idx), 'r'); drawnow; hold off;
+=======
+    %sample at the point and store data in valuemap
+    valuemap(x_, y_, :) = truevalue(x_, y_, :); %Sampling at the point
+>>>>>>> 88929eb24861d472b61aa5f576f260f39d46063e
     
-    h1 = subplot(1,2,1);
+    %update the visualizing matrix (3d map shown in plot)
+    mat_z(x_, y_) = sampled_depth;
+    h1 = subplot(2,2,1);
     surf(-1.*mat_z);
     zlim([-10, 0]);
     drawnow;
     
-    robo_state = robo_state + [0, y_inc];
+    %pull the sampled vectors from valuemap
+    samples = valuemap(xy(:,1), xy(:,2), :);
+    
     
     %pause(0.3)
     delete(r);

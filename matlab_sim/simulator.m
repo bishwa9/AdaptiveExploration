@@ -167,7 +167,7 @@ for y = 1:height
 				%  sensor noise (1st term)
 				truevalue(y,x,c) = min(1, max(0, normrnd(cmean, stds{minclass})));
 				valuemap(y,x,c) =  min(1, max(0, truevalue(y,x,c) + normrnd(0,sensorvar)));
-			end
+            end  
 		end
 	end
 end
@@ -179,6 +179,7 @@ imagesc(truevalue(:,:,1:3))
 title('True values (first 3 channels)')
 subplot(2,2,2)
 imagesc(valuemap(:,:,1:3))
+valuemap
 title('Observed values')
 subplot(2,2,3)
 imagesc(classmap)
