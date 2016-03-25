@@ -173,7 +173,7 @@ for y = 1:height
 end
 
 valuemap = valuemap(:,:,1:nvisiblechans);
-
+figure(1)
 subplot(2,2,1)
 imagesc(truevalue(:,:,1:3))
 title('True values (first 3 channels)')

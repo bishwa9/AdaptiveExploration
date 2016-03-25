@@ -9,7 +9,7 @@ nvisiblechans = 3;  %Number of channels accessible wihtout rover sampling (from 
 probrare = 0.02;    % probability of a rare class
 
 robotStart = [10, 50];  %start location for rover
-roboEnd = [50, 80];     %end point for rover
+roboEnd = [50, 90];     %end point for rover
 % End of example parameters
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -45,7 +45,7 @@ roboLen = 3; roboWid = 3; %make the rover a rectangle
 robo_state = robo_state_init; %rover is at the start
 
 mat_z = ones(y_max, x_max).*nominal_depth;  %matrix that stores number of channels currently accessed at each pixel location
-figure;
+
 
 path=[robo_state(y_idx),robo_state(x_idx)];
 
@@ -66,55 +66,62 @@ discreteMotionBlocks_y= 2.*round(ydiff/widthOfZamboni_y)-2
 
 distanceToGoal=[ydiff, xdiff];
 
+
+    axis([0,x_max,0,y_max])
+hold on; 
 while ~isequal(robo_state,robo_state_final)
     
-    if distanceToGoal(1)>distanceToGoal(2)
+    if distanceToGoal(1)<distanceToGoal(2) %go up
         
         path=motion(path,widthOfZamboni_x,direction_x);
+       [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+    pause(0.4);
         path=motion(path,zamboniStep*widthOfZamboni_y,direction_y);
-        path=motion(path,widthOfZamboni_x,-direction_x);
-        path=motion(path,zamboniStep*0.5*widthOfZamboni_y,-direction_y);
-        robo_state=path(end,:);
-       
-    else
-        path=motion(path,widthOfZamboni_y,-direction_y);
-        path=motion(path,zamboniStep*widthOfZamboni_x,direction_x);
-        path=motion(path,widthOfZamboni_y,direction_y);
-        path=motion(path,zamboniStep*0.5*widthOfZamboni_x,-direction_x);
-        robo_state=path(end,:);
-    end
+      pause(0.4);
+        [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+     path=motion(path,widthOfZamboni_x,direction_x);
+     [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+        pause(0.4);
+     path=motion(path,zamboniStep*0.5*widthOfZamboni_y,-direction_y);
+        [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+       pause(0.4);
+   
     
+    else                %go right
+        path=motion(path,widthOfZamboni_y,direction_y);
+       [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+    pause(0.4);
+        path=motion(path,zamboniStep*widthOfZamboni_x,direction_x);
+        %[valuemap]  = sample( path,truevalue,valuemap,Size_ClassMap);
+      [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+      pause(0.4);
+        path=motion(path,widthOfZamboni_y,direction_y);
+       [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+    pause(0.4);
+        path=motion(path,zamboniStep*0.5*widthOfZamboni_x,-direction_x);
+        [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+     pause(0.4);
+    end
+    robo_state=path(end,:);
     pause(0.4);
     xdiff= roboEnd(x_idx)-robo_state(x_idx);
     ydiff= roboEnd(y_idx)-robo_state(y_idx);
     direction_x= [0, sign(xdiff)];
     direction_y= [sign(ydiff),0];
-    distanceToGoal=[ydiff, xdiff]
+    distanceToGoal=[ydiff, xdiff];
     
     
-    h0 = subplot(1,2,2);
-    xlim([0, x_max]); ylim([0, y_max]);
-    r = rectangle('Position',[robo_state(y_idx), robo_state(x_idx), ...
-                                                    roboWid, roboLen]);
-    drawnow; 
+   
+   
     
-    x_ = robo_state(x_idx); 
-    y_ = robo_state(y_idx);
-    valuemap(y_, x_, :) = truevalue(y_, x_, :); %Sampling at the point
-    mat_z(y_, x_) = sampled_depth;
-    hold on; 
-    plot(path(:, y_idx), path(:, x_idx), 'r'); drawnow; hold off;
-    h1 = subplot(1,2,1);
-    surf(-1.*mat_z);
-    zlim([-10, 0]);
-    drawnow;
-    delete(r);
-    
-    if xdiff<zamboniStep | ydiff <zamboniStep
+    if xdiff<zamboniStep &&  ydiff <zamboniStep
         break;
     end
 end    
     
-subplot(1,2,2); plot(path(:, y_idx), path(:, x_idx));
-xlim([0, x_max]); ylim([0, y_max]);
+%subplot(1,2,2); plot(path(:, y_idx), path(:, x_idx));
+%xlim([0, x_max]); ylim([0, y_max]);
+
+
+
 
