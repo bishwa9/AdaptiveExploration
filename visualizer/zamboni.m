@@ -8,8 +8,8 @@ nchannels = 8;      %The number of channels (bands) of information at every pixe
 nvisiblechans = 3;  %Number of channels accessible wihtout rover sampling (from Rover)
 probrare = 0.02;    % probability of a rare class
 
-roboStart = [10, 50];  %start location for rover
-roboEnd = [70, 120];     %end point for rover
+roboStart = [10, 10];  %start location for rover
+roboEnd = [90, 90];     %end point for rover
 % End of example parameters
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -68,7 +68,8 @@ distanceToGoal=[ydiff, xdiff];
 
 
     axis([0,x_max,0,y_max])
-hold on; 
+
+    
 while ~isequal(robo_state,robo_state_final)
     
     if distanceToGoal(1)<distanceToGoal(2) %go up
