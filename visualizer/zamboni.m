@@ -8,8 +8,8 @@ nchannels = 8;      %The number of channels (bands) of information at every pixe
 nvisiblechans = 3;  %Number of channels accessible wihtout rover sampling (from Rover)
 probrare = 0.02;    % probability of a rare class
 
-robotStart = [10, 50];  %start location for rover
-roboEnd = [50, 90];     %end point for rover
+roboStart = [10, 50];  %start location for rover
+roboEnd = [70, 120];     %end point for rover
 % End of example parameters
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -37,8 +37,8 @@ valuemap_ = zeros(size(truevalue));
 valuemap_(1:y_max, 1:x_max, 1:size(valuemap,3)) = valuemap;
 valuemap = valuemap_;
 
-robo_state_init = [robotStart(1,1), robotStart(1,2)];
-robo_state_final = [roboEnd(1,1), robotStart(1,2)];
+robo_state_init = [roboStart(1,1), roboStart(1,2)];
+robo_state_final = [roboEnd(1,1), roboStart(1,2)];
 
 roboLen = 3; roboWid = 3; %make the rover a rectangle
 
@@ -51,8 +51,8 @@ path=[robo_state(y_idx),robo_state(x_idx)];
 
 %f=[0,1];b=[0,-1];l=[-1,0];r=[1,0];
 
-xdiff= roboEnd(x_idx)-robotStart(x_idx);
-ydiff= roboEnd(y_idx)-robotStart(y_idx);
+xdiff= roboEnd(x_idx)-roboStart(x_idx);
+ydiff= roboEnd(y_idx)-roboStart(y_idx);
 direction_x= [0, sign(xdiff)];
 direction_y= [sign(ydiff),0];
 
@@ -74,32 +74,32 @@ while ~isequal(robo_state,robo_state_final)
     if distanceToGoal(1)<distanceToGoal(2) %go up
         
         path=motion(path,widthOfZamboni_x,direction_x);
-       [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+       [valuemap,mat_z]  = sample( path,truevalue,valuemap,x_max,y_max,mat_z);
     pause(0.4);
         path=motion(path,zamboniStep*widthOfZamboni_y,direction_y);
       pause(0.4);
-        [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+        [valuemap,mat_z]  = sample( path,truevalue,valuemap,x_max,y_max,mat_z);
      path=motion(path,widthOfZamboni_x,direction_x);
-     [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+     [valuemap,mat_z]  = sample( path,truevalue,valuemap,x_max,y_max,mat_z);
         pause(0.4);
      path=motion(path,zamboniStep*0.5*widthOfZamboni_y,-direction_y);
-        [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+        [valuemap,mat_z]  = sample( path,truevalue,valuemap,x_max,y_max,mat_z);
        pause(0.4);
    
     
     else                %go right
         path=motion(path,widthOfZamboni_y,direction_y);
-       [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+       [valuemap,mat_z]  = sample( path,truevalue,valuemap,x_max,y_max,mat_z);
     pause(0.4);
         path=motion(path,zamboniStep*widthOfZamboni_x,direction_x);
         %[valuemap]  = sample( path,truevalue,valuemap,Size_ClassMap);
-      [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+      [valuemap,mat_z]  = sample( path,truevalue,valuemap,x_max,y_max,mat_z);
       pause(0.4);
         path=motion(path,widthOfZamboni_y,direction_y);
-       [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+       [valuemap,mat_z]  = sample( path,truevalue,valuemap,x_max,y_max,mat_z);
     pause(0.4);
         path=motion(path,zamboniStep*0.5*widthOfZamboni_x,-direction_x);
-        [valuemap]  = sample( path,truevalue,valuemap,x_max,y_max);
+        [valuemap,mat_z]  = sample( path,truevalue,valuemap,x_max,y_max,mat_z);
      pause(0.4);
     end
     robo_state=path(end,:);

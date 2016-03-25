@@ -1,4 +1,4 @@
-function [ valuemap] = sample( path,truevalue,valuemap,x_max,y_max)
+function [ valuemap,mat_z] = sample( path,truevalue,valuemap,x_max,y_max,mat_z)
 %SAMPLE Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -39,8 +39,10 @@ sampled_depth = Size_truevalue(1,3); % nchannels
     subplot(1,2,1);
     hold on;
     title('Spectral Data');
-    surf(-1.*mat_z);
+    xlim([0,x_max ]); ylim([0, y_max]);
     zlim([-10, 0]);
+    surf(-1.*mat_z);
+    
     delete(r);
     hold off;
     
