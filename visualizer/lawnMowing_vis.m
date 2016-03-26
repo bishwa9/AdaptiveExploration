@@ -69,7 +69,7 @@ for j = robo_state_init(y_pos):robo_state_final(y_pos)
     %plot the robot's rectangle
     x_ = robo_state(x_pos); 
     y_ = robo_state(y_pos);
-    h0 = subplot(2,2,2);
+    h0 = subplot(1,2,2);
     xlim([0, x_max]); ylim([0, y_max]);
     r = rectangle('Position',[robo_state(x_pos), robo_state(y_pos), ...
                                                     roboLen, roboWid]);
@@ -83,7 +83,7 @@ for j = robo_state_init(y_pos):robo_state_final(y_pos)
     
     %update the visualizing matrix (3d map shown in plot)
     mat_z(x_, y_) = sampled_depth;
-    h1 = subplot(2,2,1);
+    h1 = subplot(1,2,1);
     surf(-1.*mat_z);
     zlim([-10, 0]);
     drawnow;
