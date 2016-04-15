@@ -11,12 +11,13 @@ start_id=10
 goal_id=2
 
 g_values=[]
-f_values=[]
-
+f_anchor=[]
+f_information=[]
 open=[open start]
 
-g_values[start]=0;
-f_values[start]=0;
+g_values(start)=0;
+f_anchor(start)=0;
+f_information(start)=hmap(start)
 
 found=false;
 while(size(open,2)~=0 && found==false)
@@ -26,7 +27,7 @@ while(size(open,2)~=0 && found==false)
         
         for (i=1:size(open,2))
             
-            f=f_values(i)
+            f=f_anchor(i)
             if f<fmin
                 idx=i
                 fmin=f
@@ -46,7 +47,7 @@ while(size(open,2)~=0 && found==false)
         for (i =1:size(successors,2))
         
            g_values(i)=distance(idx,i);
-           f_values(i)=distance(i,goal_id);
+           f_anchor(i)=distance(i,goal_id);
            open=[open i]
         end
            
