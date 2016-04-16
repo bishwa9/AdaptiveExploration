@@ -1,0 +1,45 @@
+function [ open_a, open_h ,bp ] = expand( s, open_a,open_h,bp,closed_a,closed_h,mapSize )
+
+%EXPAND- implement the expand function in MHA*
+inf=99999;
+open_a(open_a==s)=[];
+open_h(open_h==s)=[];
+
+s_=[]
+s_= getSuccessors(s) %s_ is a 2D array of all the successors' indices
+
+for i=1:size(s_,2)
+    if ~any(visited==s_(i))
+        g(s_)=inf;
+        bp(s_)=-1;
+        visited=[visited s_(i)]
+    end
+    if (g(s_) > g(s) + distance(s,s_(i),mapSize))
+        g(s_)=g(s)+distance(s,s_(i),mapSize);
+        bp(s_(i))=s;
+        
+        if (~any(closed_a==s_(i))
+            %%if not expanded in the anchor search
+            if ~any(closed_a==s_(i))
+                open_a=[open_a s_(i)]
+                f_a(s_(i))= g(s_)+w1*h(s_(i))
+            else
+                f_a(s_(i))= g(s_)+w1*h(s_(i))
+            end
+        end
+        
+        
+        if (~any(closed_h==s_(i)))
+            
+            key_h=g(s_(i))+w1*hmap(s_(i));
+            key_a=g(s_(i))+w1*h(s);
+            if (key_h<= w2*key_a)
+                f_h(s_(i))= g(s_)+w1*h(s_(i))
+                if ~any(closed_h==s_(i))
+                    open_h=[open_h s_(i)];
+                end
+            end
+        end
+    end
+    
+end
