@@ -8,9 +8,12 @@ global visited;
 global h;
 global hmap;
 global g;
+global f_a;
+global f_h;
 
+start_id=10;
+goal_id=250;
 
-%%%TODO : ADD BP to trace path
 
 global w1; %weight for heurstic expansion
 global w2; %weight for additional heuristic expansion
@@ -23,14 +26,12 @@ inf =9999;
 %%compute heuristics
 
 %hmap=getHmap();
-%h=computeAnchorHeuristics(size(hmap));
-
+h=computeAnchorHeuristics(size(hmap),goal_id);
 hmap=ones(100,100);
-h=ones(100,100);
+% h=ones(100,100);
 
 
-start_id=10;
-goal_id=2;
+
 
 open_a=[];%open list for anchor search
 open_h=[]; %open list for heuristic
@@ -47,7 +48,7 @@ closed_a=[];
 g(start_id)=0;
 f_a(start_id)=0;
 f_h(start_id)=hmap(start_id);
-bp(goal_id)=-1;
+bp(start_id)=-1;
 
 open_h=[open_h start_id]
 
@@ -58,6 +59,7 @@ mapSize=size(hmap);
 
 visited=[];
 
+
 while(size(open_a,2)~=0 && found==false)
     
     fmin=9999;
@@ -66,9 +68,9 @@ while(size(open_a,2)~=0 && found==false)
     %%%Anchor%%
     for (i=1:size(open_a,2)) %%Evaluating Open0.Minkey()
         
-        f=f_a(i);
+        f=f_a(open_a(i));
         if f<fmin
-            idx_a=i;
+            idx_a=open_a(i);
             fmin=f;
         end
     end
@@ -79,10 +81,10 @@ while(size(open_a,2)~=0 && found==false)
     idx_h=0;
     for (i=1:size(open_h,2))
         
-        f=f_h(i);
+        f=f_h(open_h(i));
         if f<fmin
             fmin=f;
-            idx_h=i;
+            idx_h=open_h(i);
         end
     end
     
@@ -97,6 +99,7 @@ while(size(open_a,2)~=0 && found==false)
         s=idx_h;
         
         expand(s);   
+        
         %%exapnsion in heuristic search
         closed_h=[closed_h s];
         open_h(open_h==s)=[];
@@ -109,11 +112,29 @@ while(size(open_a,2)~=0 && found==false)
         end
         s=idx_a;
         expand(s);
+        
         closed_a=[closed_a s];
         open_a(open_a==s)=[];
         open_h(open_h==s)=[];
     end
 end
+
+path=[]
+
+state=goal_id;
+
+while (state~=start_id)
+    
+    path=[path state];
+    state=bp(state);
+
+
+end
+
+path = [path state];
+
+
+
 
 
 

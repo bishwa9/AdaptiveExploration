@@ -13,6 +13,8 @@ global visited;
 global h;
 global hmap;
 global g;
+global f_a;
+global f_h;
 
 
 inf=99999;
@@ -24,12 +26,12 @@ s_= getSuccessors(s); %s_ is a 2D array of all the successors' indices
 
 for i=1:size(s_,2)
     if ~any(visited==s_(i))
-        g(s_)=inf;
-        bp(s_)=-1;
+        g(s_(i))=inf;
+        bp(s_(i))=-1;
         visited=[visited s_(i)];
     end
-    if (g(s_) > g(s) + distance(s,s_(i)))
-        g(s_)=g(s)+distance(s,s_(i));
+    if (g(s_(i)) > g(s) + distance(s,s_(i)))
+        g(s_(i))=g(s)+distance(s,s_(i));
         bp(s_(i))=s;
         
         if (~any(closed_a==s_(i)))
@@ -40,17 +42,18 @@ for i=1:size(s_,2)
             else
                 f_a(s_(i))= g(s_(i))+w1*h(s_(i));
             end
-        end
         
         
-        if (~any(closed_h==s_(i)))
-            
-            key_h=g(s_(i))+w1*hmap(s_(i));
-            key_a=g(s_(i))+w1*h(s);
-            if (key_h<= w2*key_a)
-                f_h(s_(i))= g(s_(i))+w1*h(s_(i));
-                if ~any(closed_h==s_(i))
-                    open_h=[open_h s_(i)]
+        
+            if (~any(closed_h==s_(i)))
+
+                key_h=g(s_(i))+w1*hmap(s_(i));
+                key_a=g(s_(i))+w1*h(s);
+                if (key_h<= w2*key_a)
+                    f_h(s_(i))= g(s_(i))+w1*h(s_(i));
+                    if ~any(closed_h==s_(i))
+                        open_h=[open_h s_(i)]
+                    end
                 end
             end
         end
