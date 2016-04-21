@@ -158,13 +158,13 @@ valuemap = valuemap(:,:,1:nvisiblechans);
 %finding the indices of sampled points so that they can be removed from the
 %list when the whole map is vectorized
 %sampled_points=[1 1] % remove this. it should be passed into the function
-sampled_points_indices=sub2ind(size(valuemap),sampled_points(:,1), sampled_points(:,2));
+sampled_points_indices=sub2ind(size(valuemap),sampled_points(1,:), sampled_points(2,:));
 vect_channel = zeros(size(valuemap,1)*size(valuemap,2),3);
 sampled_vals = zeros(size(sampled_points,1),1);
 for i=1:nvisiblechans
     vect=valuemap(:,:,i);
     vect_channel(:,i)=vect(:);
-    sampled_vals(:,i)=diag(valuemap(sampled_points(:,1),sampled_points(:,2),i));
+    sampled_vals(:,i)=diag(valuemap(sampled_points(1,:),sampled_points(2,:),i));
 end
 vect_channel(sampled_points_indices,:)=[];
 V = zeros(size(vect_channel,1),3);

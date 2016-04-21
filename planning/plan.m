@@ -12,22 +12,32 @@ global f_a;
 global f_h;
 
 start_id=10;
-goal_id=250;
+goal_id=7200;
+hmap=zeros(100,100);
+mapSize=size(hmap);
 
+[x y]= ind2sub(mapSize,start_id);
+start_config=[x y];
 
 global w1; %weight for heurstic expansion
 global w2; %weight for additional heuristic expansion
 
 w1=5;
-w2=2.5;
+w2=1;
 
 inf =9999;
 
 %%compute heuristics
 
-%hmap=getHmap();
+% %hmap=getHmap();
 h=computeAnchorHeuristics(size(hmap),goal_id);
-hmap=ones(100,100);
+hmap = getHmap(100, start_config');
+
+minh=min(hmap); maxh= max(hmap);
+for i=1:size(hmap,1)
+    hmap(i)=(hmap(i)- minh)/ (maxh-minh);
+end
+% hmap=ones(100,100);
 % h=ones(100,100);
 
 
@@ -55,7 +65,6 @@ open_h=[open_h start_id]
 g(goal_id)=inf;
 
 found=false;
-mapSize=size(hmap);
 
 visited=[];
 
@@ -133,8 +142,13 @@ end
 
 path = [path state];
 
+path=fliplr(path)
 
-
+figure(1);
+[x y] =ind2sub(mapSize,path(:));
+xlim([0 100]);
+ylim([0 100]);
+plot(x, y);
 
 
 
