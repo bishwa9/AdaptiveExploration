@@ -24,6 +24,7 @@ sensorvar = .05;
 nchannels = 8;
 nvisiblechans = 3;
 probrare = 0.02;
+radius = siz/10;
 % End of example parameters
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -36,6 +37,10 @@ sample_set = [];
 
 runs = 2;
 
+figure_featureSpace = figure;
+figure_Entropy = figure;
+figure_dist = figure;
+
 % k-means
 x_ = valuemap(:,:,1);
 x_ = x_(:);
@@ -43,11 +48,10 @@ y_ = valuemap(:,:,2);
 y_ = y_(:);
 z_ = valuemap(:,:,3);
 z_ = z_(:);
-Data = [x_.';y_.';z_.'].';
-
-[~,centers,~,dists] = kmeans(Data,nclasses);
+feature_vector_new = [x_.';y_.';z_.'].';
 
 for iter = 1:runs
+[~,centers,~,dists] = kmeans(feature_vector_new,nclasses);
 % Probability and Entropy
 sums = sum(dists,2);
 info = dists;
@@ -71,20 +75,72 @@ entropy_dinv = reshape(entropy_dinv,100,100); entropy_dminus = reshape(entropy_d
 max_entropy_point_ind = datasample(max_entropy_point_ind,1);
 [I1, I2] = ind2sub(size(entropy_dinv),max_entropy_point_ind);
 
+%rover samples
 rov_sample = truevalue(I1, I2, :);
 sample_set = vertcat(sample_set, ...
                 reshape(rov_sample, [1 size(rov_sample,3)]));
-overlap_sample = rov_sample(:,:,1:3);
-valuemap(I1,I2,:) = overlap_sample;
+overlap_sample = reshape(rov_sample(:,:,1:3), [1, nvisiblechans]);
+old_sample = reshape(valuemap(I1,I2,:), [1, nvisiblechans]);
+
+%move close by points in feature space
+move_vector = overlap_sample - old_sample;
+move_vector = repmat(move_vector, siz*siz, 1);
+[~,cluster_ind] = min(dists(max_entropy_point_ind,:));
+d = dists(max_entropy_point_ind, cluster_ind);
+sigma = 0.06*(max(dists(max_entropy_point_ind,:)) - d);
+cov_mat = sigma*eye(nvisiblechans);
+cov_mat_posDef = cov_mat'*cov_mat; %%%%% -> What does this do (look into later)
+%define a filter around old_sample mean
+x_ = valuemap(:,:,1);
+x_ = x_(:);
+y_ = valuemap(:,:,2);
+y_ = y_(:);
+z_ = valuemap(:,:,3);
+z_ = z_(:);
+feature_vector = [x_.';y_.';z_.'].';
+positivedefinite = all(eig(cov_mat_posDef) > 0);
+gausian_filter = mvnpdf(feature_vector,old_sample,cov_mat_posDef);
+gausian_filter = repmat(gausian_filter, 1, nvisiblechans);
+gausian_filter = gausian_filter./max(max(gausian_filter));
+move_vector_scaled = gausian_filter.*move_vector;
+%move_vector_scaled = move_vector_scaled/norm(move_vector_scaled,Inf);
+
+%update satellite map with rover's sample
+feature_vector_new = feature_vector + move_vector_scaled;
 
 if iter == 1
-    figure;
+figure(figure_featureSpace);
+% scatter3(centers(:,1), centers(:,2), centers(:,3)); hold on;
+scatter3(feature_vector_new(:,1), feature_vector_new(:,2), feature_vector_new(:,3), 'r'); hold on;
+scatter3(feature_vector(:,1), feature_vector(:,2), feature_vector(:,3), 'g');
+legend('after sample', 'before sample');
+title('Rover sample in feature space');
+xlabel('Channel 1'); ylabel('Channel 2'); zlabel('Channel 3');
+figure(figure_dist);
+quiver3(feature_vector(:,1),feature_vector(:,2),feature_vector(:,3),move_vector_scaled(:,1),move_vector_scaled(:,2),move_vector_scaled(:,3))
+title('Movement of each point in three features');
+xlabel('Channel 1'); ylabel('Channel 2'); zlabel('Channel 3');
 end
-title('recomputed entropy');
-subplot(runs,1,iter);
-surf(entropy_dinv);
 
-% entropy_diff = entropy2 - entropy;
+figure(figure_Entropy);
+subplot(runs,1,iter);
+title('recomputed entropy');
+surf(entropy_dinv);
+xlabel('X'); ylabel('Y'); zlabel('Entropy');
+
+%recompute distances to centers
+% overlap_sample_reshape = sample_set(iter, 1:3);
+% 
+% for i = 1:nclasses
+% %     disp('Before:');
+% %     dists(max_entropy_point_ind, i)
+%     dists(max_entropy_point_ind, i) = ...
+%                         pdist2(overlap_sample_reshape, centers(i,:));
+% %     disp('After:');
+% %     dists(max_entropy_point_ind, i)
+% end
+
+% entropy_diff = entropy_dinv - entropy_dminus;
 % figure;
 % title('1-dist for probability');
 % subplot(2,2,1);
