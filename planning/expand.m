@@ -37,7 +37,7 @@ for i=1:size(s_,2)
         if (~any(closed_a==s_(i)))
             %%if not expanded in the anchor search
             if ~any(closed_a==s_(i))
-                open_a=[open_a s_(i)]
+                open_a=[open_a s_(i)];
                 f_a(s_(i))= g(s_(i))+w1*h(s_(i));
             else
                 f_a(s_(i))= g(s_(i))+w1*h(s_(i));
@@ -52,7 +52,7 @@ for i=1:size(s_,2)
                 if (key_h<= w2*key_a)
                     f_h(s_(i))= g(s_(i))+w1*h(s_(i));
                     if ~any(closed_h==s_(i))
-                        open_h=[open_h s_(i)]
+                        open_h=[open_h s_(i)];
                     end
                 end
             end
