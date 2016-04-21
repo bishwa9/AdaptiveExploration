@@ -2,7 +2,7 @@
 %                       was no miscvar by two sensorvar
 
 clear;
-addpath(genpath('../matlab_sim'));
+addpath(genpath('../../matlab_sim'));
 
 %%%%%%%%%%%%%%%%%%%%
 %   classmap -> true classification of each pixel
