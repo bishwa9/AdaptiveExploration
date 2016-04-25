@@ -1,3 +1,5 @@
+function y = plan(alpha)
+
 global open_a;
 global open_h;
 global bp;
@@ -16,6 +18,9 @@ goal_id=4580;
 hmap=zeros(100,100);
 mapSize=size(hmap);
 
+
+%alpha= 200 % factor for weighing information against
+
 [x y]= ind2sub(mapSize,start_id);
 start_config=[x y];
 
@@ -32,11 +37,15 @@ inf =9999;
 % %hmap=getHmap();
 h=computeAnchorHeuristics(size(hmap),goal_id);
 tic;
+
+%%rescaling information map based on heuristics
 hmap = getHmap(100, start_config');
 toc;
 minh=min(hmap); maxh= max(hmap);
+
+
 for i=1:size(hmap,1)
-    hmap(i)=(hmap(i)- minh)*200/ (maxh-minh);
+    hmap(i)=(hmap(i)- minh)*alpha/ (maxh-minh);
 end
 hmap=[hmap ; 50]
 % hmap=ones(100,100);
@@ -130,7 +139,7 @@ while(size(open_a,2)~=0 && found==false)
     end
 end
 
-path=[]
+path=[];
 
 state=goal_id;
 
@@ -153,6 +162,18 @@ plot(x, y);
 xlim([0 100]);
 ylim([0 100]);
 
+pathlength = size(path,2);
+informationGained = 0;
+
+for i=1:size(path,2)
+    
+    informationGained= informationGained + (hmap(path(i))/alpha);
+end
+
+y(1) =pathlength;
+y(2) =informationGained;
+
+size(y)
 
 
 
