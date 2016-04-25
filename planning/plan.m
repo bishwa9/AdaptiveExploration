@@ -1,4 +1,4 @@
-function y = plan(alpha)
+function [output] = plan(alpha)
 
 global open_a;
 global open_h;
@@ -170,10 +170,10 @@ for i=1:size(path,2)
     informationGained= informationGained + (hmap(path(i))/alpha);
 end
 
-y(1) =pathlength;
-y(2) =informationGained;
+output(1) =pathlength;
+output(2) =informationGained;
 
-size(y)
+
 
 
 
