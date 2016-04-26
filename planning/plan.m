@@ -12,6 +12,7 @@ global hmap;
 global g;
 global f_a;
 global f_h;
+global valuemap;
 
 start_id=110;
 goal_id=4580;
@@ -39,7 +40,7 @@ h=computeAnchorHeuristics(size(hmap),goal_id);
 tic;
 
 %%rescaling information map based on heuristics
-hmap = getHmap(100, start_config');
+hmap = getHmap(start_config',valuemap);
 toc;
 minh=min(hmap); maxh= max(hmap);
 
@@ -47,7 +48,7 @@ minh=min(hmap); maxh= max(hmap);
 for i=1:size(hmap,1)
     hmap(i)=(hmap(i)- minh)*alpha/ (maxh-minh);
 end
-hmap=[hmap ; 50]
+% hmap=[hmap ; 50]
 % hmap=ones(100,100);
 % h=ones(100,100);
 
