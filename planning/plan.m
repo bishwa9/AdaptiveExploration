@@ -1,5 +1,7 @@
 function [output] = plan(alpha)
 
+
+alpha 
 global open_a;
 global open_h;
 global bp;
@@ -13,6 +15,11 @@ global g;
 global f_a;
 global f_h;
 global valuemap;
+
+plotPath=1;
+
+tic;
+bp=[];
 
 start_id=110;
 goal_id=4580;
@@ -34,25 +41,36 @@ w2=2;
 inf =9999;
 
 %%compute heuristics
+toc;
 
 % %hmap=getHmap();
 h=computeAnchorHeuristics(size(hmap),goal_id);
-tic;
+toc;
 
 %%rescaling information map based on heuristics
 hmap = getHmap(start_config',valuemap);
+
 toc;
-minh=min(hmap); maxh= max(hmap);
 
 
-for i=1:size(hmap,1)
-    hmap(i)=(hmap(i)- minh)*alpha/ (maxh-minh);
-end
+minh=min(min(hmap)); maxh= max(max(hmap));
+
+information= ((hmap - minh )./ (maxh-minh));
+ 
+
+% for i=1:size(hmap,1)
+%      for j=1:size(hmap,2)
+%          hmap(i,j)=1 -((hmap(i,j)- minh)/ (maxh-minh));
+%      end
+%  end
+hmap=1 - information;
+
+hmap = alpha.*hmap;
 % hmap=[hmap ; 50]
 % hmap=ones(100,100);
 % h=ones(100,100);
 
-
+toc;
 
 
 open_a=[];%open list for anchor search
@@ -72,7 +90,7 @@ f_a(start_id)=0;
 f_h(start_id)=hmap(start_id);
 bp(start_id)=-1;
 
-open_h=[open_h start_id]
+open_h=[open_h start_id];
 
 g(goal_id)=inf;
 
@@ -80,7 +98,7 @@ found=false;
 
 visited=[];
 
-
+toc;
 while(size(open_a,2)~=0 && found==false)
     
     fmin=9999;
@@ -156,28 +174,36 @@ path = [path state];
 
 path=fliplr(path);
 
+if plotPath
 figure();
+imagesc(valuemap(:,:,1:3));
+hold on;
 [x y] =ind2sub(mapSize,path(:));
 
-plot(x, y);
+plot(x, y, 'lineWidth',2,'color','black');
 xlim([0 100]);
 ylim([0 100]);
+hold on;
+
+
+end
 
 pathlength = size(path,2);
 informationGained = 0;
 
+
+
 for i=1:size(path,2)
-    
-    informationGained= informationGained + (hmap(path(i))/alpha);
+    informationGained= informationGained + (information(path(i)));
 end
 
-output(1) =pathlength;
-output(2) =informationGained;
+output(1) =-pathlength
+output(2) =informationGained
 
 
 
 
-
+toc;
 
 
 

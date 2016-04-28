@@ -1,6 +1,9 @@
 function expand(s)
 
 %EXPAND- implement the expand function in MHA*
+
+
+
 global open_a;
 global open_h;
 global bp;
