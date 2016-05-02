@@ -15,14 +15,15 @@ global g;
 global f_a;
 global f_h;
 global valuemap;
+global path;
 
 plotPath=1;
 
 tic;
 bp=[];
 
-start_id=110;
-goal_id=4580;
+start_id=1;
+goal_id=3988;
 hmap=zeros(100,100);
 mapSize=size(hmap);
 
@@ -41,16 +42,16 @@ w2=2;
 inf =9999;
 
 %%compute heuristics
-toc;
+
 
 % %hmap=getHmap();
 h=computeAnchorHeuristics(size(hmap),goal_id);
-toc;
+
 
 %%rescaling information map based on heuristics
 hmap = getHmap(start_config',valuemap);
 
-toc;
+
 
 
 minh=min(min(hmap)); maxh= max(max(hmap));
@@ -70,7 +71,6 @@ hmap = alpha.*hmap;
 % hmap=ones(100,100);
 % h=ones(100,100);
 
-toc;
 
 
 open_a=[];%open list for anchor search
@@ -98,7 +98,6 @@ found=false;
 
 visited=[];
 
-toc;
 while(size(open_a,2)~=0 && found==false)
     
     fmin=9999;
@@ -197,8 +196,8 @@ for i=1:size(path,2)
     informationGained= informationGained + (information(path(i)));
 end
 
-output(1) =-pathlength
-output(2) =informationGained
+output(1) =-pathlength;
+output(2) =informationGained;
 
 
 
