@@ -11,6 +11,7 @@ start_config=[x y];
 entropyRed=0;
 hmap = getHmap(start_config',valuemap);
 Ent= sum(sum(sum(hmap)));
+original =Ent;
 for i=1:size(path,2)
     [x y]= ind2sub(mapSize,path(i));
     config= [x y]'
@@ -18,6 +19,7 @@ for i=1:size(path,2)
     hmap = getHmap(sampled,valuemap);
     entropyRed= entropyRed + sum(sum(Ent)) - sum(sum(sum(hmap)));
     Ent= hmap;
-    
-    
 end
+
+percentReduction= entropyRed*100/original;
+reductionPerdist= entropyRed/size(path,2);
