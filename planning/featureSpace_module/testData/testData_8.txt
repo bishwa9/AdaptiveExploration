@@ -1,0 +1,8 @@
+ndomclasses: 9
+nrareclasses: 1
+Probability of Rare Class: 0.079560
+map size: 100
+Inherent noise variance: 0.120000
+Sensor noise variance: 0.050000
+Total Channels: 8
+Satellite Channels: 3
