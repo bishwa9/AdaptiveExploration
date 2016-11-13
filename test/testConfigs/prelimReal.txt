@@ -1,0 +1,11 @@
+Test 1:
+File data.mat
+MapBounds 1 100 1 100 1 3
+Start 1 1
+End 100 100
+
+Test 2:
+File testData_3.mat
+MapBounds 1 100 1 100 1 3
+Start 1 1
+End 100 100
