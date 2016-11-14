@@ -26,8 +26,8 @@ while (line ~= -1)
     newCase = ~isempty( strfind(line, 'Test') );
     
     if newCase
-        %% read test configuration
         path = [];
+        %% read test configuration
         fileName_line = strsplit(fgetl(fileID));
         fileName = fileName_line(1, 2);
         
@@ -69,7 +69,7 @@ while (line ~= -1)
             config= [x y]';
             sampled(:, i) = config;
             if i >= 2
-                path_length = path_length + pdist2(sampled(:,i-1)', config');
+                path_length = path_length + pdist2(sampled(
             end
         end
         hmap = getHmap(sampled,valuemap);
@@ -79,10 +79,10 @@ while (line ~= -1)
         percentReduction = abs(entropyRed*100/Ent_begin);
         percRed = [percRed, percentReduction];
 
-        reductionPerdist = entropyRed/path_length;
+        reductionPerdist = entropyRed/size(path,2);
         redPerDist = [redPerDist, reductionPerdist];
         
-        pathLengths = [pathLengths, path_length];
+        pathLengths = [pathLengths, size(path,2)];
         
         line = fgetl(fileID); %skip a line
         line = fgetl(fileID)

@@ -37,7 +37,7 @@
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-addpath('../matlab_sim/');
+addpath('../util/');
 
 %%%%%%%%%%%%%%%%%%%%%
 % Example parameters. Comment this out if you want to use this as a function!
