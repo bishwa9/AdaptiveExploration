@@ -15,6 +15,7 @@ valuemap = map_init;
 robot_cur_config = start_config;
 plotPath = 0;
 sample_set = zeros(budget_sample, 2); 
+waypoints_ = [];
 sample_num = 0;
 dist_travelled = 0;
 while (1==1)
@@ -24,9 +25,13 @@ while (1==1)
     %% decide where to sample on the path (how?)
     sample_config = [1,1];
     sample_num = sample_num + 1;
-    
-    %% sample
     sample_set(sample_num, :) = sample_config;
+    
+    %% direct path to sampled point
+    subpath = direct_plan(robot_cur_config, sample_config);
+    waypoints_ = vertcat(waypoints_, subpath);
+    robot_cur_config = sample_config;
+    dist_travelled = dist_travelled + path_dist(subpath);
     
     %% check budgets
     if( sample_num == budget_sample || ...
@@ -40,4 +45,12 @@ while (1==1)
     end
 end
 
+end
+
+function pathdist = path_dist(path)
+dist_ = 0;
+for i = 1:size(path,1)-1
+    dist_ = dist_ + pdist2(path(i,:), path(i+1,:));
+end
+pathdist = dist_;
 end
