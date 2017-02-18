@@ -1,8 +1,8 @@
 clear;
 
 addpath('../testConfigs/');
-addpath('../../entropy_calculation/featureSpace_module/real_code/');
-%addpath('../../entropy_calculation/differential_ent/');
+%addpath('../../entropy_calculation/featureSpace_module/real_code/');
+addpath('../../entropy_calculation/differential_ent/');
 addpath('../../planning/mha_star');
 addpath('../../testData/realData');
 addpath('../../testData/simData');
