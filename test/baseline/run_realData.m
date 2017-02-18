@@ -20,7 +20,6 @@ times = [];
 pathLengths = [];
 mapSizes = [];
 errs = [];
-errs_dec = [];
 
 %% Get Test configurations
 fileID = fopen('realData_smartTest100.txt','r');
@@ -58,7 +57,6 @@ while (line ~= -1)
         valuemap = valuemap(mapBounds(1):mapBounds(2), ...
                             mapBounds(3):mapBounds(4), ...
                             mapBounds(5):mapBounds(6));
-        nclasses = 3;
         plotPath = 0;
         tic;
         %plan(472.0649, valuemap, start_config, goal_config, plotPath);
@@ -94,12 +92,10 @@ while (line ~= -1)
                 path_length = path_length + pdist2(sampled(:,i-1)', config');
             end
         end
-        err_before = reconError(truevalue(:,:,1:size(valuemap,3)), valuemap, nclasses);
         valuemap = reshape(feature_vector, mapSize);
         %calculate reconstruction error
-        err = reconError(truevalue(:,:,1:size(valuemap,3)), valuemap, nclasses);
+        err = reconError(truevalue, path);
         errs = [errs, err];
-        errs_dec = [errs_dec, err_before-err];
         pathLengths = [pathLengths, path_length];
 %         hmap = getHmap(sampled,valuemap);
 %         Ent_end = sum(sum(sum(hmap)));

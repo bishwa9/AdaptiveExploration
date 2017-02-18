@@ -23,7 +23,8 @@ global f_h;
 inf=99999;
 
 
-
+[cx, cy] = ind2sub(mapSize, s);
+cur_sub = [cx, cy];
 s_=[];
 s_= getSuccessors(s); %s_ is a 2D array of all the successors' indices
 
@@ -33,8 +34,11 @@ for i=1:size(s_,2)
         bp(s_(i))=-1;
         visited=[visited s_(i)];
     end
-    if (g(s_(i)) > g(s) + distance(s,s_(i)))
-        g(s_(i))=g(s)+distance(s,s_(i));
+    [sx, sy] = ind2sub(mapSize, s_(i));
+    succ_sub = [sx, sy];
+    
+    if (g(s_(i)) > g(s) + pdist2(succ_sub, cur_sub))
+        g(s_(i))=g(s)+pdist2(succ_sub, cur_sub);
         bp(s_(i))=s;
         
         if (~any(closed_a==s_(i)))
