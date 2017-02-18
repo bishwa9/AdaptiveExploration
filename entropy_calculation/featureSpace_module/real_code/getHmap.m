@@ -1,7 +1,5 @@
 function [ entropyMap ] = getHmap( sampled_pts, valuemap, nclasses )
 
-addpath('~/Desktop/Academic/WettergreenResearch/AdaptiveExploration/entropy_calculation/featureSpace_module/test_code/');
-
 persistent kmeans_memeberships centers
 
 %extract feature vector

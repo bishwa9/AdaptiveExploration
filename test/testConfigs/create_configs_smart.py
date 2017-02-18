@@ -11,8 +11,8 @@ targetFile.truncate()
 
 mapMinX = 1
 mapMinY = 1
-mapMaxX = 400
-mapMaxY = 400
+mapMaxX = 100
+mapMaxY = 100
 
 qBounds = [[mapMinX, mapMaxX/2.0, mapMinY, mapMaxY/2.0],
            [mapMaxX/2.0+1, mapMaxX, mapMinY, mapMaxY/2.0],

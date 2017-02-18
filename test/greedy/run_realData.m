@@ -71,13 +71,13 @@ while (line ~= -1)
         %% sample at every point
         sampled = zeros(2,size(path,2));
         %define a filter around old_sample mean
-        x_ = valuemap(:,:,1);
-        x_ = x_(:);
-        y_ = valuemap(:,:,2);
-        y_ = y_(:);
-        z_ = valuemap(:,:,3);
-        z_ = z_(:);
-        feature_vector = [x_.';y_.';z_.'].';
+%         x_ = valuemap(:,:,1);
+%         x_ = x_(:);
+%         y_ = valuemap(:,:,2);
+%         y_ = y_(:);
+%         z_ = valuemap(:,:,3);
+%         z_ = z_(:);
+%         feature_vector = [x_.';y_.';z_.'].';
         
 %         hmap = getHmap(start_config',valuemap);
 %         Ent_begin = sum(sum(sum(hmap)));
@@ -86,15 +86,15 @@ while (line ~= -1)
             [x, y]= ind2sub(mapSize,path(i));
             config= [x y]';
             sampled(:, i) = config;
-            feature_vector = update_fs(feature_vector, config, ...
-                                        feature_vector(path(i),:), ...
-                                        reshape(truevalue(x,y,1:size(feature_vector,2)), ...
-                                        [1,size(feature_vector,2)]), 0);
+%             feature_vector = update_fs(feature_vector, config, ...
+%                                         feature_vector(path(i),:), ...
+%                                         reshape(truevalue(x,y,1:size(feature_vector,2)), ...
+%                                         [1,size(feature_vector,2)]), 0);
             if i >= 2
                 path_length = path_length + pdist2(sampled(:,i-1)', config');
             end
         end
-        valuemap = reshape(feature_vector, mapSize);
+%         valuemap = reshape(feature_vector, mapSize);
         %calculate reconstruction error
         err = reconError(truevalue, path);
         errs = [errs, err];
@@ -122,8 +122,8 @@ end
 
 %% Plot Statistics
 figure;
-scatter(pathLengths, errs); title('Reconstruction Errors');
-save('output_gkfs.mat', 'pathLengths', 'errs', 'errs_dec');
+boxplot(errs);
+save('greedyFS_100t_100u.mat', 'pathLengths', 'errs', 'times');
 % figure;
 % scatter([1:size(redPerDist,2)], redPerDist); title('Reduction per distance');
 % figure;

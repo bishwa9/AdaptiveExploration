@@ -55,7 +55,7 @@ while (line ~= -1)
                             mapBounds(5):mapBounds(6));
         plotPath = 1;
         tic;
-        plan(472.0649, valuemap, start_config, goal_config, plotPath);
+        plan(0, valuemap, start_config, goal_config, plotPath);
         time_taken = toc;
         times = [times, time_taken];
         
