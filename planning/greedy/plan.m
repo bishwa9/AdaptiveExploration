@@ -1,9 +1,9 @@
 function plan( start_config, goal_config, prior_map, window_size, dist_budget )
 
-addpath('../../entropy_calculation/differential_ent/'); %gethmap(...)
 
 global path
 global mapSize
+global nclasses
 mapSize=size(prior_map);
 
 cur_config = start_config;
@@ -48,7 +48,8 @@ while 1==1
     end
     
     %get full entropy map
-    hmap = getHmap(sampled', prior_map);
+    %hmap = getHmap(sampled', prior_map);
+    hmap = getHmap(sampled', prior_map, nclasses); %fs
     
     %get max within window
     max_ = hmap(topLeft(1,1), topLeft(1,2));

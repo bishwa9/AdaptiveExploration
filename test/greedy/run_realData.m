@@ -1,9 +1,8 @@
 clear;
 
 addpath('../testConfigs/');
-%addpath('../../entropy_calculation/featureSpace_module/real_code/');
-addpath('../../entropy_calculation/differential_ent/');
-%addpath('../../planning/mha_star');
+addpath('../../entropy_calculation/featureSpace_module/real_code/');
+%addpath('../../entropy_calculation/differential_ent/');
 addpath('../../planning/greedy');
 addpath('../../testData/realData');
 addpath('../../testData/simData');
@@ -12,6 +11,7 @@ addpath('../');
 %% Get the data into the system
 global path;
 global mapSize;
+global nclasses;
 
 %% Define variables
 percRed = [];
@@ -57,6 +57,8 @@ while (line ~= -1)
         valuemap = valuemap(mapBounds(1):mapBounds(2), ...
                             mapBounds(3):mapBounds(4), ...
                             mapBounds(5):mapBounds(6));
+        mapSize = size(valuemap);
+        nclasses = 3;
         plotPath = 0;
         tic;
         %plan(472.0649, valuemap, start_config, goal_config, plotPath);
