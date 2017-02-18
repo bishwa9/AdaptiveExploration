@@ -1,7 +1,8 @@
 clear;
 
 addpath('../testConfigs/');
-addpath('../../util/');
+addpath('../../entropy_calculation/featureSpace_module/real_code/');
+%addpath('../../entropy_calculation/differential_ent/');
 addpath('../../planning/mha_star');
 addpath('../../testData/realData');
 addpath('../../testData/simData');
@@ -52,7 +53,7 @@ while (line ~= -1)
         valuemap = valuemap(mapBounds(1):mapBounds(2), ...
                             mapBounds(3):mapBounds(4), ...
                             mapBounds(5):mapBounds(6));
-        plotPath = 0;
+        plotPath = 1;
         tic;
         plan(472.0649, valuemap, start_config, goal_config, plotPath);
         time_taken = toc;

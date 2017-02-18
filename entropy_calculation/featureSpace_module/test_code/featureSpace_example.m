@@ -3,6 +3,7 @@
 
 clear;
 addpath(genpath('../../matlab_sim'));
+addpath(genpath('../testData'));
 addpath(genpath('./helperFunctions'));
 
 %%%%%%%%%%%%%%%%%%%%
@@ -31,7 +32,7 @@ probrare = 0.02;
 domeanShift = 0;
 visualize = 0;
 redoClustering = 0;
-numSamples = 500;
+numSamples = 10;
 elapsed_times = ones(1,numSamples);
 entropies = ones(siz,siz,numSamples);
 sampled_entropy = ones(numSamples, 1);
