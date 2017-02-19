@@ -6,6 +6,7 @@ addpath('../../entropy_calculation/differential_ent/');
 addpath('../../planning/mha_star');
 addpath('../../testData/realData');
 addpath('../../testData/simData');
+addpath('../');
 
 %% Get the data into the system
 global path;
@@ -17,9 +18,10 @@ redPerDist = [];
 times = [];
 pathLengths = [];
 mapSizes = [];
+errs = [];
 
 %% Get Test configurations
-fileID = fopen('prelimReal.txt','r');
+fileID = fopen('simData_smartTest100.txt','r');
 
 line = fgetl(fileID)
 
@@ -53,40 +55,46 @@ while (line ~= -1)
         valuemap = valuemap(mapBounds(1):mapBounds(2), ...
                             mapBounds(3):mapBounds(4), ...
                             mapBounds(5):mapBounds(6));
-        plotPath = 1;
+        plotPath = 0;
         tic;
-        plan(0, valuemap, start_config, goal_config, plotPath);
+        plan(292.1468, valuemap, start_config, goal_config, plotPath);
         time_taken = toc;
         times = [times, time_taken];
-        
-        %% sample at every point
+        %% Sample every point and calculate recon. error
         sampled = zeros(2,size(path,2));
-        
-        hmap = getHmap(start_config',valuemap);
-        Ent_begin = sum(sum(sum(hmap)));
         path_length = 0;
         for i=1:size(path,2)
             [x, y]= ind2sub(mapSize,path(i));
             config= [x y]';
             sampled(:, i) = config;
+%             feature_vector = update_fs(feature_vector, config, ...
+%                                         feature_vector(path(i),:), ...
+%                                         reshape(truevalue(x,y,1:size(feature_vector,2)), ...
+%                                         [1,size(feature_vector,2)]), 0);
             if i >= 2
                 path_length = path_length + pdist2(sampled(:,i-1)', config');
             end
         end
-        hmap = getHmap(sampled,valuemap);
-        Ent_end = sum(sum(sum(hmap)));
-        entropyRed = abs( Ent_end - Ent_begin );
-
-        percentReduction = abs(entropyRed*100/Ent_begin);
-        percRed = [percRed, percentReduction];
-
-        reductionPerdist = entropyRed/path_length;
-        redPerDist = [redPerDist, reductionPerdist];
-        
+%         valuemap = reshape(feature_vector, mapSize);
+        %calculate reconstruction error
+        err = reconError(truevalue, path);
+        errs = [errs, err];
         pathLengths = [pathLengths, path_length];
+%         hmap = getHmap(sampled,valuemap);
+%         Ent_end = sum(sum(sum(hmap)));
+%         entropyRed = abs( Ent_end - Ent_begin );
+% 
+%         percentReduction = abs(entropyRed*100/Ent_begin);
+%         percRed = [percRed, percentReduction];
+% 
+%         reductionPerdist = entropyRed/path_length;
+%         redPerDist = [redPerDist, reductionPerdist];
+%         
+%         pathLengths = [pathLengths, path_length];
         
         line = fgetl(fileID); %skip a line
         line = fgetl(fileID)
+
     else
         disp 'PROBLEM IN FILE CONFIGURATION!';
         break;
@@ -96,11 +104,8 @@ end
 
 %% Plot Statistics
 figure;
-scatter(pathLengths, percRed); title('Percent Reductions');
-figure;
-scatter([1:size(redPerDist,2)], redPerDist); title('Reduction per distance');
-figure;
-scatter([1:size(times,2)], times); title('Time of exection');
+boxplot(errs);
+save('mhaDiffSim_100t_100u.mat', 'pathLengths', 'errs', 'times');
 
 %% End
 fclose(fileID);

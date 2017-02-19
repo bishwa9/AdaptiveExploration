@@ -22,7 +22,7 @@ mapSizes = [];
 errs = [];
 
 %% Get Test configurations
-fileID = fopen('realData_smartTest100.txt','r');
+fileID = fopen('simData_smartTest100.txt','r');
 
 line = fgetl(fileID)
 
@@ -58,7 +58,7 @@ while (line ~= -1)
                             mapBounds(3):mapBounds(4), ...
                             mapBounds(5):mapBounds(6));
         mapSize = size(valuemap);
-        nclasses = 3;
+        %nclasses = 10;
         plotPath = 0;
         tic;
         %plan(472.0649, valuemap, start_config, goal_config, plotPath);
@@ -123,7 +123,7 @@ end
 %% Plot Statistics
 figure;
 boxplot(errs);
-save('greedyFS_100t_100u.mat', 'pathLengths', 'errs', 'times');
+save('greedyFSSim_100t_100u.mat', 'pathLengths', 'errs', 'times');
 % figure;
 % scatter([1:size(redPerDist,2)], redPerDist); title('Reduction per distance');
 % figure;
