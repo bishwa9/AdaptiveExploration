@@ -63,10 +63,15 @@ while (line ~= -1)
         %% Sample every point and calculate recon. error
         sampled = zeros(2,size(path,2));
         path_length = 0;
+        recon_path = [];
         for i=1:size(path,2)
             [x, y]= ind2sub(mapSize,path(i));
             config= [x y]';
             sampled(:, i) = config;
+            
+            recon_path = [recon_path, reconError(truevalue, sampled(:,1:i))];
+            
+            
 %             feature_vector = update_fs(feature_vector, config, ...
 %                                         feature_vector(path(i),:), ...
 %                                         reshape(truevalue(x,y,1:size(feature_vector,2)), ...
