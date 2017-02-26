@@ -48,8 +48,8 @@ while 1==1
     end
     
     %get full entropy map
-    hmap = getHmap(sampled', prior_map);
-    %hmap = getHmap(sampled', prior_map, nclasses); %fs
+    %hmap = getHmap(sampled', prior_map);
+    hmap = getHmap(sampled', prior_map, nclasses); %fs
     
     %get max within window
     max_ = hmap(topLeft(1,1), topLeft(1,2));

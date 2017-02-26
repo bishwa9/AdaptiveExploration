@@ -1,8 +1,8 @@
 clear;
 
 addpath('../testConfigs/');
-%addpath('../../entropy_calculation/featureSpace_module/real_code/');
-addpath('../../entropy_calculation/differential_ent/');
+addpath('../../entropy_calculation/featureSpace_module/real_code/');
+%addpath('../../entropy_calculation/differential_ent/');
 addpath('../../planning/greedy');
 addpath('../../testData/realData');
 addpath('../../testData/simData');
@@ -62,7 +62,9 @@ while (line ~= -1)
         plotPath = 0;
         tic;
         %plan(472.0649, valuemap, start_config, goal_config, plotPath);
-        dist_budget = pdist2(start_config, goal_config) * 1.5;
+        start_config = [1,1];
+        goal_config = [100,100];
+        dist_budget = pdist2(start_config, goal_config) * 2;
         window_size = [15,15];
         plan( start_config, goal_config, valuemap, window_size, dist_budget );
         time_taken = toc;
@@ -99,6 +101,7 @@ while (line ~= -1)
                 path_length = path_length + pdist2(sampled(:,i-1)', config');
             end
         end
+        plot(recon_path);
 %         valuemap = reshape(feature_vector, mapSize);
         %calculate reconstruction error
         err = reconError(truevalue, path);

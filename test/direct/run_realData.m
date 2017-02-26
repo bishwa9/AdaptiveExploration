@@ -21,7 +21,7 @@ mapSizes = [];
 errs = [];
 
 %% Get Test configurations
-fileID = fopen('realData_smartTest100.txt','r');
+fileID = fopen('simData_smartTest100.txt','r');
 
 line = fgetl(fileID)
 
@@ -59,6 +59,8 @@ while (line ~= -1)
         mapSize = size(valuemap);  
         plotPath = 0;
         tic;
+        start_config = [1,1];
+        goal_config = [100,100];
         %plan(472.0649, valuemap, start_config, goal_config, plotPath);
         dist_budget = pdist2(start_config, goal_config) * 1.5;
         window_size = [15,15];
@@ -80,7 +82,7 @@ while (line ~= -1)
 %         hmap = getHmap(start_config',valuemap);
 %         Ent_begin = sum(sum(sum(hmap)));
         path_length = 0;
-        for i=1:size(path,2)
+        for i=1:size(path,1)
             [x, y]= ind2sub(mapSize,path(i));
             config= [x y]';
             sampled(:, i) = config;
@@ -121,7 +123,7 @@ end
 %% Plot Statistics
 figure;
 scatter(pathLengths, errs); title('Reconstruction Errors');
-save('output_gkfs.mat', 'pathLengths', 'errs', 'errs_dec');
+save('directSim_100t_100u.mat', 'pathLengths', 'errs', 'errs_dec');
 % figure;
 % scatter([1:size(redPerDist,2)], redPerDist); title('Reduction per distance');
 % figure;
