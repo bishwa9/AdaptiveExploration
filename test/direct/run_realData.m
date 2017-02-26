@@ -1,8 +1,6 @@
 clear;
 
 addpath('../testConfigs/');
-%addpath('../../entropy_calculation/featureSpace_module/real_code/');
-%addpath('../../entropy_calculation/differential_ent/');
 addpath('../../planning/direct');
 addpath('../../testData/realData');
 addpath('../../testData/simData');
@@ -21,7 +19,7 @@ mapSizes = [];
 errs = [];
 
 %% Get Test configurations
-fileID = fopen('simData_smartTest100.txt','r');
+fileID = fopen('realData_2_100.txt','r');
 
 line = fgetl(fileID)
 
@@ -52,15 +50,12 @@ while (line ~= -1)
         
         %% start the planner
         load(fileName{1});
-        truevalue = valuemap;
         valuemap = valuemap(mapBounds(1):mapBounds(2), ...
                             mapBounds(3):mapBounds(4), ...
                             mapBounds(5):mapBounds(6));
         mapSize = size(valuemap);  
         plotPath = 0;
         tic;
-        start_config = [1,1];
-        goal_config = [100,100];
         %plan(472.0649, valuemap, start_config, goal_config, plotPath);
         dist_budget = pdist2(start_config, goal_config) * 1.5;
         window_size = [15,15];
@@ -71,13 +66,13 @@ while (line ~= -1)
         %% sample at every point
         sampled = zeros(2,size(path,2));
         %define a filter around old_sample mean
-        x_ = valuemap(:,:,1);
-        x_ = x_(:);
-        y_ = valuemap(:,:,2);
-        y_ = y_(:);
-        z_ = valuemap(:,:,3);
-        z_ = z_(:);
-        feature_vector = [x_.';y_.';z_.'].';
+%         x_ = valuemap(:,:,1);
+%         x_ = x_(:);
+%         y_ = valuemap(:,:,2);
+%         y_ = y_(:);
+%         z_ = valuemap(:,:,3);
+%         z_ = z_(:);
+%         feature_vector = [x_.';y_.';z_.'].';
         
 %         hmap = getHmap(start_config',valuemap);
 %         Ent_begin = sum(sum(sum(hmap)));
@@ -86,15 +81,15 @@ while (line ~= -1)
             [x, y]= ind2sub(mapSize,path(i));
             config= [x y]';
             sampled(:, i) = config;
-            feature_vector = update_fs(feature_vector, config, ...
-                                        feature_vector(path(i),:), ...
-                                        reshape(truevalue(x,y,1:size(feature_vector,2)), ...
-                                        [1,size(feature_vector,2)]), 0);
+%             feature_vector = update_fs(feature_vector, config, ...
+%                                         feature_vector(path(i),:), ...
+%                                         reshape(truevalue(x,y,1:size(feature_vector,2)), ...
+%                                         [1,size(feature_vector,2)]), 0);
             if i >= 2
                 path_length = path_length + pdist2(sampled(:,i-1)', config');
             end
         end
-        valuemap = reshape(feature_vector, mapSize);
+%         valuemap = reshape(feature_vector, mapSize);
         %calculate reconstruction error
         err = reconError(truevalue, path);
         errs = [errs, err];

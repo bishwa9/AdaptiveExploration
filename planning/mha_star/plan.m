@@ -50,8 +50,8 @@ h=computeAnchorHeuristics(size(hmap),goal_id);
 
 
 %%rescaling information map based on heuristics
-%hmap = getHmap(start_config',valuemap); %diff
-hmap = getHmap(start_config',valuemap, 10); %fspace
+hmap = getHmap(start_config',valuemap); %diff
+%hmap = getHmap(start_config',valuemap, 10); %fspace
 
 
 

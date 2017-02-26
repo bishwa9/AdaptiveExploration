@@ -13,7 +13,9 @@ for i=-1:1
         x_new=x+i;
         y_new=y+j;
         if (x_new)>0 && (x_new)<=mapSize(2) && (y_new)>0 && (y_new)<=mapSize(1)
-            
+            x_new
+            y_new
+            mapSize
             s_=[s_ sub2ind(mapSize,x_new,y_new)];
         end
     end
