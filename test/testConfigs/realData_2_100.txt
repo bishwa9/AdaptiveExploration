@@ -1,600 +1,600 @@
 Test 1:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 162 85
-End 122 369
+MapBounds 1 450 1 450 1 20
+Start 239 145
+End 126 106
 
 Test 2:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 342 167
-End 101 130
+MapBounds 1 450 1 450 1 20
+Start 439 302
+End 207 136
 
 Test 3:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 305 133
-End 183 212
+MapBounds 1 450 1 450 1 20
+Start 146 382
+End 85 183
 
 Test 4:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 16 172
-End 324 83
+MapBounds 1 450 1 450 1 20
+Start 385 88
+End 157 305
 
 Test 5:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 181 168
-End 425 354
+MapBounds 1 450 1 450 1 20
+Start 296 323
+End 141 370
 
 Test 6:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 268 200
-End 79 134
+MapBounds 1 450 1 450 1 20
+Start 198 285
+End 266 1
 
 Test 7:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 109 214
-End 183 288
+MapBounds 1 450 1 450 1 20
+Start 27 361
+End 315 318
 
 Test 8:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 273 113
-End 5 176
+MapBounds 1 450 1 450 1 20
+Start 438 214
+End 9 405
 
 Test 9:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 163 327
-End 432 47
+MapBounds 1 450 1 450 1 20
+Start 427 4
+End 82 107
 
 Test 10:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 20 267
-End 411 294
+MapBounds 1 450 1 450 1 20
+Start 324 11
+End 52 77
 
 Test 11:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 117 42
-End 346 395
+MapBounds 1 450 1 450 1 20
+Start 396 135
+End 160 84
 
 Test 12:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 118 30
-End 396 21
+MapBounds 1 450 1 450 1 20
+Start 57 347
+End 389 361
 
 Test 13:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 435 101
-End 174 41
+MapBounds 1 450 1 450 1 20
+Start 261 354
+End 237 118
 
 Test 14:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 301 64
-End 310 272
+MapBounds 1 450 1 450 1 20
+Start 126 438
+End 326 7
 
 Test 15:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 6 54
-End 443 58
+MapBounds 1 450 1 450 1 20
+Start 59 119
+End 308 189
 
 Test 16:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 409 184
-End 66 169
+MapBounds 1 450 1 450 1 20
+Start 332 105
+End 134 383
 
 Test 17:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 249 409
-End 346 209
+MapBounds 1 450 1 450 1 20
+Start 23 1
+End 252 91
 
 Test 18:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 486 7
-End 225 271
+MapBounds 1 450 1 450 1 20
+Start 428 318
+End 77 377
 
 Test 19:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 423 80
-End 44 315
+MapBounds 1 450 1 450 1 20
+Start 373 14
+End 230 253
 
 Test 20:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 38 6
-End 422 187
+MapBounds 1 450 1 450 1 20
+Start 427 418
+End 216 447
 
 Test 21:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 441 55
-End 157 308
+MapBounds 1 450 1 450 1 20
+Start 172 201
+End 30 252
 
 Test 22:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 183 216
-End 482 349
+MapBounds 1 450 1 450 1 20
+Start 96 358
+End 138 164
 
 Test 23:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 39 372
-End 371 107
+MapBounds 1 450 1 450 1 20
+Start 354 37
+End 299 338
 
 Test 24:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 461 297
-End 185 250
+MapBounds 1 450 1 450 1 20
+Start 374 227
+End 186 112
 
 Test 25:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 478 440
-End 148 39
+MapBounds 1 450 1 450 1 20
+Start 28 86
+End 100 416
 
 Test 26:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 339 287
-End 96 419
+MapBounds 1 450 1 450 1 20
+Start 145 263
+End 137 210
 
 Test 27:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 414 235
-End 168 311
+MapBounds 1 450 1 450 1 20
+Start 441 240
+End 224 422
 
 Test 28:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 320 4
-End 187 260
+MapBounds 1 450 1 450 1 20
+Start 442 358
+End 6 241
 
 Test 29:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 363 180
-End 163 9
+MapBounds 1 450 1 450 1 20
+Start 147 240
+End 407 39
 
 Test 30:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 69 155
-End 378 293
+MapBounds 1 450 1 450 1 20
+Start 281 148
+End 147 377
 
 Test 31:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 134 366
-End 497 79
+MapBounds 1 450 1 450 1 20
+Start 247 197
+End 194 142
 
 Test 32:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 385 278
-End 201 9
+MapBounds 1 450 1 450 1 20
+Start 249 134
+End 1 272
 
 Test 33:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 263 65
-End 33 165
+MapBounds 1 450 1 450 1 20
+Start 201 111
+End 159 445
 
 Test 34:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 312 325
-End 277 21
+MapBounds 1 450 1 450 1 20
+Start 196 350
+End 253 275
 
 Test 35:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 110 87
-End 415 73
+MapBounds 1 450 1 450 1 20
+Start 144 249
+End 350 353
 
 Test 36:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 188 130
-End 483 177
+MapBounds 1 450 1 450 1 20
+Start 99 132
+End 286 251
 
 Test 37:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 147 380
-End 35 66
+MapBounds 1 450 1 450 1 20
+Start 2 54
+End 163 255
 
 Test 38:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 260 347
-End 3 206
+MapBounds 1 450 1 450 1 20
+Start 161 344
+End 242 206
 
 Test 39:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 152 340
-End 398 14
+MapBounds 1 450 1 450 1 20
+Start 7 138
+End 420 420
 
 Test 40:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 498 235
-End 109 309
+MapBounds 1 450 1 450 1 20
+Start 175 141
+End 10 294
 
 Test 41:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 347 39
-End 442 234
+MapBounds 1 450 1 450 1 20
+Start 295 347
+End 433 123
 
 Test 42:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 205 294
-End 276 67
+MapBounds 1 450 1 450 1 20
+Start 198 55
+End 376 307
 
 Test 43:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 155 383
-End 95 47
+MapBounds 1 450 1 450 1 20
+Start 172 99
+End 204 415
 
 Test 44:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 66 230
-End 246 118
+MapBounds 1 450 1 450 1 20
+Start 69 220
+End 355 296
 
 Test 45:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 401 285
-End 48 106
+MapBounds 1 450 1 450 1 20
+Start 131 205
+End 56 349
 
 Test 46:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 416 194
-End 241 287
+MapBounds 1 450 1 450 1 20
+Start 434 147
+End 102 402
 
 Test 47:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 490 323
-End 428 100
+MapBounds 1 450 1 450 1 20
+Start 425 340
+End 4 177
 
 Test 48:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 1 305
-End 493 407
+MapBounds 1 450 1 450 1 20
+Start 45 162
+End 223 445
 
 Test 49:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 203 424
-End 284 351
+MapBounds 1 450 1 450 1 20
+Start 219 234
+End 235 409
 
 Test 50:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 210 422
-End 250 53
+MapBounds 1 450 1 450 1 20
+Start 138 38
+End 450 266
 
 Test 51:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 12 42
-End 276 199
+MapBounds 1 450 1 450 1 20
+Start 366 244
+End 319 208
 
 Test 52:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 93 124
-End 422 432
+MapBounds 1 450 1 450 1 20
+Start 152 308
+End 426 256
 
 Test 53:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 335 148
-End 126 27
+MapBounds 1 450 1 450 1 20
+Start 252 443
+End 246 63
 
 Test 54:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 81 143
-End 426 435
+MapBounds 1 450 1 450 1 20
+Start 4 219
+End 7 367
 
 Test 55:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 137 167
-End 456 162
+MapBounds 1 450 1 450 1 20
+Start 221 111
+End 31 251
 
 Test 56:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 447 145
-End 323 325
+MapBounds 1 450 1 450 1 20
+Start 51 100
+End 372 156
 
 Test 57:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 340 305
-End 218 367
+MapBounds 1 450 1 450 1 20
+Start 423 281
+End 210 192
 
 Test 58:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 355 235
-End 226 407
+MapBounds 1 450 1 450 1 20
+Start 83 285
+End 313 190
 
 Test 59:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 145 431
-End 184 210
+MapBounds 1 450 1 450 1 20
+Start 414 291
+End 130 107
 
 Test 60:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 272 356
-End 9 289
+MapBounds 1 450 1 450 1 20
+Start 70 134
+End 256 315
 
 Test 61:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 296 19
-End 3 352
+MapBounds 1 450 1 450 1 20
+Start 326 408
+End 67 241
 
 Test 62:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 191 204
-End 189 321
+MapBounds 1 450 1 450 1 20
+Start 200 120
+End 72 396
 
 Test 63:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 163 372
-End 23 97
+MapBounds 1 450 1 450 1 20
+Start 319 207
+End 418 376
 
 Test 64:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 216 248
-End 270 356
+MapBounds 1 450 1 450 1 20
+Start 389 55
+End 131 29
 
 Test 65:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 409 310
-End 67 106
+MapBounds 1 450 1 450 1 20
+Start 94 286
+End 436 27
 
 Test 66:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 148 304
-End 316 160
+MapBounds 1 450 1 450 1 20
+Start 343 124
+End 108 307
 
 Test 67:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 491 69
-End 315 397
+MapBounds 1 450 1 450 1 20
+Start 370 233
+End 237 190
 
 Test 68:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 373 368
-End 308 125
+MapBounds 1 450 1 450 1 20
+Start 107 176
+End 387 372
 
 Test 69:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 340 341
-End 203 19
+MapBounds 1 450 1 450 1 20
+Start 405 447
+End 436 118
 
 Test 70:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 180 227
-End 418 334
+MapBounds 1 450 1 450 1 20
+Start 318 19
+End 168 216
 
 Test 71:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 402 273
-End 111 302
+MapBounds 1 450 1 450 1 20
+Start 209 270
+End 4 5
 
 Test 72:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 447 34
-End 48 43
+MapBounds 1 450 1 450 1 20
+Start 131 354
+End 425 106
 
 Test 73:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 80 301
-End 171 113
+MapBounds 1 450 1 450 1 20
+Start 289 281
+End 370 161
 
 Test 74:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 126 338
-End 285 337
+MapBounds 1 450 1 450 1 20
+Start 79 53
+End 318 295
 
 Test 75:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 349 11
-End 175 346
+MapBounds 1 450 1 450 1 20
+Start 331 239
+End 260 198
 
 Test 76:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 54 354
-End 139 33
+MapBounds 1 450 1 450 1 20
+Start 244 331
+End 140 328
 
 Test 77:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 432 308
-End 213 435
+MapBounds 1 450 1 450 1 20
+Start 63 427
+End 19 41
 
 Test 78:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 450 224
-End 248 243
+MapBounds 1 450 1 450 1 20
+Start 237 214
+End 173 135
 
 Test 79:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 498 310
-End 148 102
+MapBounds 1 450 1 450 1 20
+Start 6 174
+End 439 429
 
 Test 80:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 215 101
-End 310 92
+MapBounds 1 450 1 450 1 20
+Start 102 247
+End 218 49
 
 Test 81:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 302 418
-End 243 205
+MapBounds 1 450 1 450 1 20
+Start 5 350
+End 295 122
 
 Test 82:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 288 179
-End 435 370
+MapBounds 1 450 1 450 1 20
+Start 53 250
+End 323 276
 
 Test 83:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 266 74
-End 1 179
+MapBounds 1 450 1 450 1 20
+Start 226 277
+End 52 46
 
 Test 84:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 475 113
-End 431 450
+MapBounds 1 450 1 450 1 20
+Start 208 413
+End 159 221
 
 Test 85:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 386 259
-End 299 52
+MapBounds 1 450 1 450 1 20
+Start 107 228
+End 178 45
 
 Test 86:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 83 298
-End 434 258
+MapBounds 1 450 1 450 1 20
+Start 258 101
+End 126 265
 
 Test 87:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 360 246
-End 75 49
+MapBounds 1 450 1 450 1 20
+Start 408 43
+End 195 440
 
 Test 88:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 266 432
-End 50 103
+MapBounds 1 450 1 450 1 20
+Start 100 127
+End 344 152
 
 Test 89:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 325 188
-End 384 329
+MapBounds 1 450 1 450 1 20
+Start 327 34
+End 193 405
 
 Test 90:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 182 160
-End 285 222
+MapBounds 1 450 1 450 1 20
+Start 230 356
+End 50 202
 
 Test 91:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 500 162
-End 114 178
+MapBounds 1 450 1 450 1 20
+Start 196 347
+End 118 135
 
 Test 92:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 82 385
-End 357 355
+MapBounds 1 450 1 450 1 20
+Start 424 25
+End 134 430
 
 Test 93:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 406 184
-End 355 448
+MapBounds 1 450 1 450 1 20
+Start 201 37
+End 266 408
 
 Test 94:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 173 337
-End 101 19
+MapBounds 1 450 1 450 1 20
+Start 170 12
+End 170 350
 
 Test 95:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 80 226
-End 488 52
+MapBounds 1 450 1 450 1 20
+Start 265 420
+End 4 127
 
 Test 96:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 220 232
-End 243 145
+MapBounds 1 450 1 450 1 20
+Start 203 228
+End 50 101
 
 Test 97:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 281 339
-End 453 192
+MapBounds 1 450 1 450 1 20
+Start 222 103
+End 355 306
 
 Test 98:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 472 339
-End 83 173
+MapBounds 1 450 1 450 1 20
+Start 58 286
+End 170 121
 
 Test 99:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 368 69
-End 11 43
+MapBounds 1 450 1 450 1 20
+Start 324 445
+End 244 15
 
 Test 100:
 File ../../testData/realData/realData_2.mat
-MapBounds 1 500 1 450 1 20
-Start 407 42
-End 107 377
+MapBounds 1 450 1 450 1 20
+Start 307 174
+End 361 387
 
