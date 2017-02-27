@@ -122,9 +122,7 @@ while (line ~= -1)
 end
 
 %% Plot Statistics
-figure;
-boxplot(errs);
-save('greedyFSSim_100t_100u.mat', 'pathLengths', 'errs', 'times');
+save('greedyFSC.mat', 'pathLengths', 'errs', 'times');
 % figure;
 % scatter([1:size(redPerDist,2)], redPerDist); title('Reduction per distance');
 % figure;
