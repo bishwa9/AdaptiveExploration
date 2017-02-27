@@ -3,7 +3,7 @@ clear;
 addpath('../testConfigs/');
 
 %% Get Test configurations
-fileID = fopen('realData_randomTest1000.txt','r');
+fileID = fopen('realData_2_100.txt','r');
 
 dists = []
 
@@ -31,11 +31,11 @@ while (line ~= -1)
         
         st_s_line = strsplit(fgetl(fileID));
         start_config = [str2double( st_s_line(2) ), ...
-                        str2double( st_s_line(3) )];
+                        str2double( st_s_line(3) )]
         
         g_s_line = strsplit(fgetl(fileID));
         goal_config = [str2double( g_s_line(2) ), ...
-                       str2double( g_s_line(3) )];
+                       str2double( g_s_line(3) )]
                  
         eucliDist = pdist2(start_config, goal_config);           
         dists = [dists, eucliDist];

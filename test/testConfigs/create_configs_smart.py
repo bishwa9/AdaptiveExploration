@@ -11,8 +11,8 @@ targetFile.truncate()
 
 mapMinX = 1
 mapMinY = 1
-mapMaxX = 100
-mapMaxY = 100
+mapMaxX = 220
+mapMaxY = 220
 
 qBounds = [[mapMinX, mapMaxX/2.0, mapMinY, mapMaxY/2.0],
            [mapMaxX/2.0+1, mapMaxX, mapMinY, mapMaxY/2.0],
@@ -22,7 +22,7 @@ qBounds = [[mapMinX, mapMaxX/2.0, mapMinY, mapMaxY/2.0],
 for i in xrange(0, numTests):
     line1 = "Test " + str(i+1) + ":"
     line2 = "File " + testDataFile
-    line3 = "MapBounds " + str(mapMinX) + " " + str(mapMaxX) + " " + str(mapMinY) + " " + str(mapMaxY) + " 1 3"
+    line3 = "MapBounds " + str(mapMinX) + " " + str(mapMaxX) + " " + str(mapMinY) + " " + str(mapMaxY) + " 1 20"
 
     # choose a certain quadrant
     listQuadrants = [0, 1, 2, 3]

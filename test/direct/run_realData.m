@@ -19,7 +19,7 @@ mapSizes = [];
 errs = [];
 
 %% Get Test configurations
-fileID = fopen('realData_2_100.txt','r');
+fileID = fopen('simData_smartTest100.txt','r');
 
 line = fgetl(fileID)
 
@@ -116,9 +116,7 @@ while (line ~= -1)
 end
 
 %% Plot Statistics
-figure;
-scatter(pathLengths, errs); title('Reconstruction Errors');
-save('directSim_100t_100u.mat', 'pathLengths', 'errs', 'errs_dec');
+save('directSim_100t_100u.mat', 'pathLengths', 'errs', 'times');
 % figure;
 % scatter([1:size(redPerDist,2)], redPerDist); title('Reduction per distance');
 % figure;
